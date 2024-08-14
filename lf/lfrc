@@ -1,6 +1,10 @@
 # interpreter for shell commands
 set shell sh
 
+# set hidden files to be shown
+set hidden
+# toggle hidden files
+map H :set hidden!
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to
 # exit on error and option '-u' is used to give error for unset variables.
