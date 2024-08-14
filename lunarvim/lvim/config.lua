@@ -22,6 +22,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
+vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 -- unmap a default keymapping
 vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -57,7 +58,7 @@ lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Project
 lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope oldfiles<CR>", "Recents" }
 lvim.builtin.which_key.mappings["F"] = { "<cmd>Telescope live_grep theme=ivy<CR>", "Find Text" }
 lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope find_files theme=dropdown<CR>", "Find Text" }
-lvim.builtin.which_key.mappings["t"] = { "<cmd> ToggleTerm direction=float<CR>", "Terminal" }
+lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm direction=float<CR>", "Terminal" }
 lvim.builtin.which_key.mappings["d"] = {
   name = "+Trouble",
   r = { "<cmd>Trouble lsp_references<cr>", "References" },
@@ -218,7 +219,14 @@ lvim.plugins = {
   --   after = "nvim-treesitter",
   --   dependacies = "nvim-treesitter/nvim-treesitter",
   -- },
-  { 'simrat39/rust-tools.nvim' }
+  { 'simrat39/rust-tools.nvim' },
+  { 'MunifTanjim/nui.nvim' },
+  {
+    'VonHeikemen/fine-cmdline.nvim',
+    dependacies = {
+      { 'MunifTanjim/nui.nvim' }
+    }
+  }
 }
 
 vim.cmd [[imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")]]
