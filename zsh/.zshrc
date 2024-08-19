@@ -128,7 +128,6 @@ esac
 eval "$(starship init zsh)"
 
 bindkey -v
-export PATH="/opt/homebrew/opt/node@20/bin:$PATH"
 
 
 lfcd() {
