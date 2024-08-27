@@ -22,7 +22,7 @@ lvim.leader = "space"
 lvim.keys.normal_mode["<C-s>"] = ":w<cr>"
 lvim.keys.normal_mode["<S-l>"] = ":BufferLineCycleNext<CR>"
 lvim.keys.normal_mode["<S-h>"] = ":BufferLineCyclePrev<CR>"
-vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
+-- vim.api.nvim_set_keymap('n', ':', '<cmd>FineCmdline<CR>', { noremap = true })
 -- unmap a default keymapping
 vim.keymap.del("n", "<C-Up>")
 -- override a default keymapping
@@ -214,11 +214,11 @@ lvim.plugins = {
     end,
   },
   { 'github/copilot.vim' },
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   after = "nvim-treesitter",
-  --   dependacies = "nvim-treesitter/nvim-treesitter",
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    dependacies = "nvim-treesitter/nvim-treesitter",
+  },
   { 'simrat39/rust-tools.nvim' },
   { 'MunifTanjim/nui.nvim' },
   {
