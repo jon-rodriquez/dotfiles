@@ -65,7 +65,10 @@ prompt pure
 # ~~~~~~~~~~~~~~~ File Manager Config ~~~~~~~~~~~~~~~~~~~~~~~~
 alias lv='lvim .'
 alias dot='cd $DOTFILES'
-alias repos='cd $REPOS'
+alias repo='cd $REPOS'
+alias gcom='git add . && git commit -m'
+alias ggpush='git push origin "$(git_current_branch)"'
+alias ggpull='git pull origin "$(git_current_branch)"'
 
 # ~~~~~~~~~~~~~~~ File Manager Config ~~~~~~~~~~~~~~~~~~~~~~~~
 lfcd() {
@@ -79,3 +82,4 @@ lfcd() {
         fi
     fi
 }
+
