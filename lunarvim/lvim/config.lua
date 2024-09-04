@@ -1,3 +1,4 @@
+reload('user.plugins')
 --[[
 lvim is the global options object
 
@@ -71,8 +72,10 @@ lvim.builtin.which_key.mappings["d"] = {
 lvim.builtin.which_key.mappings['D'] = {
   "<cmd>lua vim.diagnostic.open_float()<CR>", "float diag"
 }
-
--- TODO: User Config for predefined plugins
+-- 🔓 Make file executable
+-- vim.keymap.set("n", "<leader>mx", ":!chmod +x %<cr>")
+-- 🚀 Execute file and show output
+-- vim.keymap.set("n", "<leader>ef", "<cmd>lua *G.execute*file_and_show_output()<CR>", { noremap = true, silent = false })
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
 lvim.builtin.alpha.mode = "dashboard"
@@ -100,50 +103,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enable = true
 
--- require'nvim-treesitter.configs'.setup {
---   textobjects = {
---     select = {
---       enable = true,
 
---       -- Automatically jump forward to textobj, similar to targets.vim
---       lookahead = true,
-
---       keymaps = {
---         -- You can use the capture groups defined in textobjects.scm
---         ["af"] = "@function.outer",
---         ["if"] = "@function.inner",
---         ["ac"] = "@class.outer",
---         -- You can optionally set descriptions to the mappings (used in the desc parameter of
---         -- nvim_buf_set_keymap) which plugins like which-key display
---         ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
---         -- You can also use captures from other query groups like `locals.scm`
---         ["as"] = { query = "@scope", query_group = "locals", desc = "Select language scope" },
---       },
---       -- You can choose the select mode (default is charwise 'v')
---       --
---       -- Can also be a function which gets passed a table with the keys
---       -- * query_string: eg '@function.inner'
---       -- * method: eg 'v' or 'o'
---       -- and should return the mode ('v', 'V', or '<c-v>') or a table
---       -- mapping query_strings to modes.
---       selection_modes = {
---         ['@parameter.outer'] = 'v', -- charwise
---         ['@function.outer'] = 'V', -- linewise
---         ['@class.outer'] = '<c-v>', -- blockwise
---       },
---       -- If you set this to `true` (default is `false`) then any textobject is
---       -- extended to include preceding or succeeding whitespace. Succeeding
---       -- whitespace has priority in order to act similarly to eg the built-in
---       -- `ap`.
---       --
---       -- Can also be a function which gets passed a table with the keys
---       -- * query_string: eg '@function.inner'
---       -- * selection_mode: eg 'v'
---       -- and should return true or false
---       include_surrounding_whitespace = true,
---     },
---   },
--- }
 -- generic LSP settings
 
 -- -- make sure server will always be installed even if the server is in skipped_servers list
@@ -204,25 +164,6 @@ local linters = require "lvim.lsp.null-ls.linters"
 linters.setup {
   -- { command = "eslint", filetype = { "typescript" } }
 }
-
--- Additional Plugins
-lvim.plugins = {
-  { 'christoomey/vim-tmux-navigator' },
-  {
-    'akinsho/git-conflict.nvim',
-    version = "*",
-    config = function()
-      require('git-conflict').setup()
-    end,
-  },
-  { 'github/copilot.vim' }
-  -- {'nvim-treesitter/nvim-treesitter'},
-  -- {
-  --   "nvim-treesitter/nvim-treesitter-textobjects",
-  --   after = "nvim-treesitter",
-  --   dependacies = "nvim-treesitter/nvim-treesitter",
-  -- },
- }
 
 vim.cmd [[imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")]]
 vim.g.copilot_no_tab_map = true
