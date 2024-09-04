@@ -1,4 +1,5 @@
 reload('user.plugins')
+reload('user.which-key')
 --[[
 lvim is the global options object
 
@@ -53,25 +54,6 @@ lvim.builtin.telescope.defaults.mappings = {
 -- lvim.builtin.theme.options.dim_inactive = true
 -- lvim.builtin.theme.options.style = "storm"
 
--- Use which-key to add extra bindings with the leader-key prefix
-lvim.builtin.which_key.mappings["v"] = { "<cmd>vsplit<CR>", "v split" }
-lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-lvim.builtin.which_key.mappings["o"] = { "<cmd>Telescope oldfiles<CR>", "Recents" }
-lvim.builtin.which_key.mappings["F"] = { "<cmd>Telescope live_grep theme=ivy<CR>", "Find Text" }
-lvim.builtin.which_key.mappings["f"] = { "<cmd>Telescope find_files theme=dropdown<CR>", "Find Text" }
-lvim.builtin.which_key.mappings["t"] = { "<cmd>ToggleTerm direction=float<CR>", "Terminal" }
-lvim.builtin.which_key.mappings["d"] = {
-  name = "+Trouble",
-  r = { "<cmd>Trouble lsp_references<cr>", "References" },
-  f = { "<cmd>Trouble lsp_definitions<cr>", "Definitions" },
-  d = { "<cmd>Trouble document_diagnostics<cr>", "Diagnostics" },
-  q = { "<cmd>Trouble quickfix<cr>", "QuickFix" },
-  l = { "<cmd>Trouble loclist<cr>", "LocationList" },
-  w = { "<cmd>Trouble workspace_diagnostics<cr>", "Workspace Diagnostics" },
-}
-lvim.builtin.which_key.mappings['D'] = {
-  "<cmd>lua vim.diagnostic.open_float()<CR>", "float diag"
-}
 -- 🔓 Make file executable
 -- vim.keymap.set("n", "<leader>mx", ":!chmod +x %<cr>")
 -- 🚀 Execute file and show output
@@ -128,12 +110,7 @@ lvim.lsp.installer.setup.ensure_installed = {
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pyright" })
 local opts = {} -- check the lspconfig documentation for a list of all possible options
 require("lvim.lsp.manager").setup("pyright", opts)
-lvim.builtin.which_key.mappings["l"]["f"] = {
-  function()
-    require("lvim.lsp.utils").format { timeout_ms = 10000 }
-  end,
-  "Format",
-}
+
 
 ---remove a server from the skipped list, e.g. eslint, or emmet_ls. !!Requires `:LvimCacheReset` to take effect!!
 ---`:LvimInfo` lists which server(s) are skipped for the current filetype
