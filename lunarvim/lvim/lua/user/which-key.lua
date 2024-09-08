@@ -28,3 +28,10 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
   end,
   "Format",
 }
+
+lvim.builtin.which_key.mappings['s'] = {
+  function() require("flash").jump() end, "Flash"
+}
+lvim.builtin.which_key.mappings['S'] = {
+  function() require("flash").treesitter() end, "Flash Treesitter"
+}

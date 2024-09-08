@@ -23,5 +23,12 @@ lvim.plugins = {
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+    -- stylua: ignore
   }
 }
