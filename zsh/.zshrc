@@ -1,6 +1,5 @@
 # ~~~~~~~~~~~~~~~ Environment Variables ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 # Set to superior editing mode
 
 set -o vi
@@ -18,24 +17,21 @@ export DOTFILES="/Users/jonathanrodriquez/dotfiles"
 
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 setopt extended_glob null_glob
 
 path=(
     $path                           # Keep existing PATH entries
     $HOME/bin
     $HOME/.local/bin
+    $HOME/go/bin
 )
-
 # Remove duplicate entries and non-existent directories
 typeset -U path
 path=($^path(N-/))
 
 export PATH
 
-
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -47,7 +43,6 @@ setopt SHARE_HISTORY      # Share history between sessions
 
 
 # ~~~~~~~~~~~~~~~ Prompt ~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 PURE_GIT_PULL=0
 
@@ -62,15 +57,22 @@ autoload -U promptinit; promptinit
 prompt pure
 
 
-# ~~~~~~~~~~~~~~~ File Manager Config ~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~ Alias Config ~~~~~~~~~~~~~~~~~~~~~~~~
+
 alias lv='lvim .'
 alias dot='cd $DOTFILES'
 alias repo='cd $REPOS'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias gs='git status'
+alias gco='git checkout'
+alias gcb='git checkout -b'
 alias gcom='git add . && git commit -m'
 alias ggpush='git push origin "$(git_current_branch)"'
 alias ggpull='git pull origin "$(git_current_branch)"'
 
 # ~~~~~~~~~~~~~~~ File Manager Config ~~~~~~~~~~~~~~~~~~~~~~~~
+
 lfcd() {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"
@@ -83,3 +85,6 @@ lfcd() {
     fi
 }
 
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
