@@ -1,5 +1,6 @@
 reload('user.plugins')
 reload('user.which-key')
+reload('user.noice')
 --[[
 lvim is the global options object
 
@@ -144,4 +145,3 @@ linters.setup {
 
 vim.cmd [[imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")]]
 vim.g.copilot_no_tab_map = true
-
