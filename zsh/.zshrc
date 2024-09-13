@@ -68,7 +68,7 @@ alias gs='git status'
 alias gco='git checkout'
 alias gcb='git checkout -b'
 alias gcom='git add . && git commit -m'
-alias ggpush='git push origin "$(git_current_branch)"'
+alias ggpush='git push origin $(git symbolic-ref --short HEAD)'
 alias ggpull='git pull origin "$(git_current_branch)"'
 
 # ~~~~~~~~~~~~~~~ File Manager Config ~~~~~~~~~~~~~~~~~~~~~~~~
