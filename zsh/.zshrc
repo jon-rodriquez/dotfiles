@@ -24,6 +24,7 @@ path=(
     $HOME/bin
     $HOME/.local/bin
     $HOME/go/bin
+    $HOME/.tmuxifier/bin
 )
 # Remove duplicate entries and non-existent directories
 typeset -U path
@@ -88,3 +89,7 @@ lfcd() {
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+# ~~~~~~~~~~~~~~~ Tmuxifier ~~~~~~~~~~~~~~~~~~~~~~~~
+eval "$(tmuxifier init -)"
