@@ -1,6 +1,7 @@
 reload('user.plugins')
 reload('user.which-key')
 reload('user.noice')
+reload('user.colorizer')
 --[[
 lvim is the global options object
 

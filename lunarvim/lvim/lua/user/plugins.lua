@@ -31,6 +31,7 @@ lvim.plugins = {
     opts = {},
     -- stylua: ignore
   },
+  { 'norcalli/nvim-colorizer.lua' },
   -- lazy.nvim
   -- {
   --   "folke/noice.nvim",
