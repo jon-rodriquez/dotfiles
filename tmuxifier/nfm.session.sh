@@ -7,7 +7,7 @@ session_root "~/Documents/GitHub/nfm-lending"
 if initialize_session "nfm"; then
 
   # window to select project and open neovim
-  new_window "dev"
+  new_window "NeoVim"
 
 
   # start the crm backend and frontend. most used servers
@@ -40,9 +40,12 @@ if initialize_session "nfm"; then
   run_cmd "npm start"
   select_pane 3
 
+  new_window "components"
+  run_cmd "cd ../components-library"
+  run_cmd "npm run storybook"
 
   #select the dev window
-  select_window "dev"
+  select_window "NeoVim"
 
 
 
