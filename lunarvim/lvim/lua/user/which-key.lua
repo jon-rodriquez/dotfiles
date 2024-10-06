@@ -35,3 +35,4 @@ lvim.builtin.which_key.mappings['s'] = {
 lvim.builtin.which_key.mappings['S'] = {
   function() require("flash").treesitter() end, "Flash Treesitter"
 }
+
