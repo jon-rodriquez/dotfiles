@@ -15,7 +15,7 @@ I have added some custom keybindings and plugins on top of the default configura
 
 Its a status bar program that I use on the mac. I use the Mac's feature of workspaces and have a status bar that shows the current workspace and the current application in that workspace.
 I have also add keybindings to switch between workspaces and applications.
-In Mac you can use alt + <number> to switch between workspaces.
+In Mac you can use alt + {number} to switch between workspaces.
 
 ### tmux
 
