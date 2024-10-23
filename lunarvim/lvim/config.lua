@@ -93,7 +93,8 @@ lvim.builtin.treesitter.highlight.enable = true
 -- -- make sure server will always be installed even if the server is in skipped_servers list
 lvim.lsp.installer.setup.ensure_installed = {
   "jsonls",
-  "eslint"
+  "eslint",
+  "gopls"
 }
 -- change UI setting of `LspInstallInfo`
 -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
@@ -131,10 +132,34 @@ lvim.lsp.on_attach_callback = function(client, bufnr)
   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 end
 
+
+local lspconfig = require('lspconfig')
+local util = require 'lspconfig/util'
+lspconfig.gopls.setup {
+  on_attach = require('lvim.lsp').common_on_attach,
+  capabilities = require('lvim.lsp').common_capabilities(),
+  cmd = { "gopls" },
+  filetypes = { "go", "gomod", "gowork", 'gotmpl' },
+  root_dir = util.root_pattern("go.mod", ".git", "go.work"),
+  settings = {
+    gopls = {
+      completeUnimported = true,
+      usePlaceholders = true,
+      analyses = {
+        unusedparams = true,
+        unreachable = false,
+      },
+    }
+  }
+}
+
+
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
-  { command = "eslint", filetype = { "typescript", "typescriptreact" },
+  { command = "stylua",  filetype = { "lua" } },
+  { command = "gofumpt", filetype = { "go" } },
+  { command = "prettier", filetype = { "typescript", "typescriptreact" },
     { command = "rustfmt", filetype = { "rust" } } }
 }
 
