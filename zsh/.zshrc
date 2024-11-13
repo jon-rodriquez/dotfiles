@@ -32,6 +32,9 @@ path=($^path(N-/))
 
 export PATH
 
+# ~~~~~~~~~~~~~~~ Completion ~~~~~~~~~~~~~~~~~~~~~~~~
+# instllation repo: git clone --depth 1 -- https://github.com/marlonrichert/zsh-autocomplete.git
+source $REPOS/zsh-autocomplete/zsh-autocomplete.plugin.zsh
 # ~~~~~~~~~~~~~~~ History ~~~~~~~~~~~~~~~~~~~~~~~~
 
 HISTFILE=~/.zsh_history
