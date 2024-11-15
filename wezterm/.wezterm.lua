@@ -11,6 +11,8 @@ config.enable_tab_bar = false
 config.native_macos_fullscreen_mode = false
 config.window_close_confirmation = "NeverPrompt"
 config.color_scheme = "Catppuccin Mocha"
+config.max_fps = 120
+config.font_size = 13.0
 
 -- and finally, return the configuration to wezterm
 return config
