@@ -15,6 +15,7 @@ export BROWSER="chrome"
 export REPOS="/Users/jonathanrodriquez/Documents/GitHub"
 export DOTFILES="/Users/jonathanrodriquez/dotfiles"
 
+export JAVA_HOME="/Users/jonathanrodriquez/jdk/jdk-23/jdk-23.0.1.jdk/Contents/Home"
 # ~~~~~~~~~~~~~~~ Path configuration ~~~~~~~~~~~~~~~~~~~~~~~~
 
 setopt extended_glob null_glob
@@ -25,6 +26,7 @@ path=(
     $HOME/.local/bin
     $HOME/go/bin
     $HOME/.tmuxifier/bin
+    $Java_HOME/bin:$PATH
 )
 # Remove duplicate entries and non-existent directories
 typeset -U path
